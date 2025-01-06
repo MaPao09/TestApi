@@ -10,7 +10,7 @@ func main() {
 
     // Define a route for the root path
     r.GET("/", func(c *gin.Context) {
-        c.String(200, "Hello, World!")
+        c.String(200, "คิคิ รักนะคะ")
     })
 
     // Start the HTTP server on port 8080
