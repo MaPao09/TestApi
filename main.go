@@ -1,15 +1,18 @@
 package main
 
 import (
-    "fmt"
-    "net/http"
+    "github.com/gin-gonic/gin"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hello, World!")
-}
-
 func main() {
-    http.HandleFunc("/", handler)
-    http.ListenAndServe(":8080", nil)
+    // Create a Gin router instance
+    r := gin.Default()
+
+    // Define a route for the root path
+    r.GET("/", func(c *gin.Context) {
+        c.String(200, "Hello, World!")
+    })
+
+    // Start the HTTP server on port 8080
+    r.Run(":8080")
 }
