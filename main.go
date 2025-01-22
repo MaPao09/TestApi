@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-	channelSecret := "2ba2a0fa740b0e221247e2de5b7a1e18"
-	channelAccessToken := "bwNTU+jdpfCtMwhIjlLnFQtGoBPG9AKu/9zIy61Vnj0ULeT/qr3VsvAyv5KP3mo6in2efiQbGjfJqdHs6aGXmMikE79y94n5n5AxRCAmG4mOXrubNmNxB//uN3Gaaep0vjCbqFgb1bJMy+/QZkoPdwdB04t89/1O/w1cDnyilFU="
+	channelSecret := "66fdd3246b5f37baae63be6676823ada"
+	channelAccessToken := "Ui2NhUdEXK78K+AZcVhLRDrJplBlfLWBSKH+lAM075AdI2JBx1ZCp8bb9TtDR1X7xojouh88eAGJkKOPz7SXExqg4dJU2xJRNazF3MPy9maGiGCG3nXtQ6F7Crs7JJRYvNPY4rhdeaKjHClHMH6HygdB04t89/1O/w1cDnyilFU="
 
 	bot, err := linebot.New(channelSecret, channelAccessToken)
 	if err != nil {
