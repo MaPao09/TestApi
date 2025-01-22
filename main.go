@@ -33,7 +33,7 @@ func main() {
 				case *linebot.TextMessage:
 					_, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("คุณพิมพ์ว่า: "+message.Text)).Do()
 					if err != nil {
-						log.Println("Error replying message:", err)
+						log.Println("Error replying message:", err)  
 					}
 				}
 			}
