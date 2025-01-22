@@ -15,7 +15,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	http.HandleFunc("/webhook", func(w http.ResponseWriter, req *http.Request) {
 		events, err := bot.ParseRequest(req)
 		if err != nil {
@@ -26,19 +25,21 @@ func main() {
 			}
 			return
 		}
-
+	
 		for _, event := range events {
-			if event.Type == linebot.EventTypeMessage {
-				switch message := event.Message.(type) {
-				case *linebot.TextMessage:
-					_, err = bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("คุณพิมพ์ว่า: "+message.Text)).Do()
-					if err != nil {
-						log.Println("Error replying message:", err)  
-					}
+			if event.Source.Type == linebot.EventSourceTypeGroup {
+				groupID := event.Source.GroupID
+				log.Println("Group ID:", groupID)
+	
+				// ส่งข้อความกลับไปยังกลุ่ม (ถ้าต้องการ)
+				_, err := bot.ReplyMessage(event.ReplyToken, linebot.NewTextMessage("Group ID: "+groupID)).Do()
+				if err != nil {
+					log.Println("Error replying message:", err)
 				}
 			}
 		}
 	})
+	
 
 	log.Println("Starting server on :8080...")
 	if err := http.ListenAndServe(":80", nil); err != nil {
